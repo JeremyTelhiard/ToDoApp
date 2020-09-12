@@ -12,12 +12,43 @@ body {
 
 .title {
   grid-area: header;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: calc(6vw + 3rem);
+  font-weight: 800;
+  color: #00FFFFFF
 }
 
 .tasklist{
   grid-area: lists;
 }
 
+.tasklist-main {
+  line-height: 1.5;
+  font-size: 1.1rem;
+  list-style: circle;
+  padding-left: 1em;
+}
+
+.active-list {
+  font-weight: 800;
+}
+
 .todo {
   grid-area: active;
+}
+
+.new-input {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  font-size: inherit;
+  outline: none;
+  transition: border-bottom 150ms ease-in;
+  order: 2;
+}
+
+.new-input:focus {
+  border-bottom-width: 4px;
 }
