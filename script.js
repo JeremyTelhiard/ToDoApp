@@ -29,7 +29,7 @@ listContainer.addEventListener('click', e => {
 displayTasks.addEventListener('click', e => {
   if (e.target.tagName.toLowerCase() === 'input') {
       const selectedList = lists.find(list => list.id === listId)
-      const selectedTask = selectedList.tasks.find(task => task.id === e.target.id)
+      const selectedTask = selectedList.tasks.find(task => task.id === e.target.id);
       selectedTask.complete = e.target.checked;
       save();
       renderCount(selectedList);
@@ -63,15 +63,15 @@ listForm.addEventListener('submit', e => {
 
 newTask.addEventListener('submit', e => {
    e.preventDefault()
-    const taskName = newTaskInput.value
-    if (taskName == null || taskName === '') {
+   const taskName = newTaskInput.value;
+   if (taskName == null || taskName === '') {
       return
     }
-    const task = createTask(taskName)
-    newTaskInput.value = null
-    const selectedList = lists.find(list => list.id === listId)
-    selectedList.tasks.push(task)
-    saveAll();
+   const task = createTask(taskName);
+   newTaskInput.value = null;
+   const selectedList = lists.find(list => list.id === listId);
+   selectedList.tasks.push(task);
+   saveAll();
 })
 
 function createTask(name) {
@@ -113,14 +113,16 @@ function render() {
     listDisplay.style.display = '';
     listTitle.innerText = selectedList.name;
     renderCount(selectedList);
+    clear(displayTasks);
+    taskRender(selectedList);
   }
 }
 
 
 function renderCount(selectedList) {
-  const incompleted = selectedList.tasks.filter(task => !task.complete).length;
-  const taskString = incompleted === 1 ? "task" : "tasks";
-  listCount.innerText = `$(incompleted) $(taskString) remaining`
+  const incompleteCount = selectedList.tasks.filter(task => !task.complete).length
+  const taskString = incompleteCount === 1 ? "task" : "tasks"
+  listCount.innerText = `${incompleteCount} ${taskString} remaining`
 }
 
 
@@ -133,7 +135,7 @@ function taskRender(selectedList) {
       const label = taskElement.querySelector('label')
       label.htmlFor = task.id
       label.append(task.name)
-      tasksContainer.appendChild(taskElement)
+      displayTasks.appendChild(taskElement)
     })
 }
 
