@@ -118,12 +118,12 @@ form {
 }
 
 .todo-body {
-  padding: var(--spacer);
+  padding: 2rem;
   position: relative;
 }
 
 .new-task-creator .create {
-  color: var(--clr-primary);
+  color: violet;
 }
 
 [type="checkbox"] {
@@ -216,4 +216,8 @@ form {
   left: 0;
   bottom: -35px;
   color: white;
+}
+
+.task-creation {
+  margin-bottom: -1rem;
 }
